@@ -32,8 +32,8 @@ bool wasTouchDetected(int pinIdx) {
   return td;
 }
 
-void gotTouchT0() {
-  touchDetected[0] = true;
+void gotTouchT6() {
+  touchDetected[6] = true;
 }
 
 struct tm* getTime(){
@@ -44,7 +44,7 @@ struct tm* getTime(){
 
 
 void setup() {
-  touchAttachInterrupt(T0, gotTouchT0, 40);
+  touchAttachInterrupt(T6, gotTouchT6, 40);
 
   connect();
   configTime(3600, 3600, "pool.ntp.org");
@@ -59,7 +59,7 @@ void setup() {
 }
 
 void loop() {
-  if (wasTouchDetected(0)) {
+  if (wasTouchDetected(6)) {
     displayCount = 30;
   }
   while (displayCount > 0) {

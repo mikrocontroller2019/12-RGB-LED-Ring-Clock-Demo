@@ -117,7 +117,7 @@
           <block type="controls_if" id="YPKVJf7h-[Ht/Rb)oR{w">
             <value name="IF0">
               <block type="touch_sensor_touch_detected" id="g3h*N%h7{6pj1i5|TYwo">
-                <field name="TOUCH_PIN">T0</field>
+                <field name="TOUCH_PIN">T6</field>
               </block>
             </value>
             <statement name="DO0">
