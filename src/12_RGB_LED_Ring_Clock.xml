@@ -1,0 +1,1026 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id=".tNbSbWNrH3E:-1DM:uu" x="83" y="-578">
+    <statement name="SETUP_FUNC">
+      <block type="serial_setup" id="K9]u@UdUrRH?XQY@7aWl" disabled="true">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="SPEED">9600</field>
+        <next>
+          <block type="serial_print" id="B^w!BBhnQ1,9gj?#x+W+" disabled="true">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="NEW_LINE">TRUE</field>
+            <value name="CONTENT">
+              <block type="text" id="ZAU@#E]rKf{uN%,,d%Mm">
+                <field name="TEXT">Connecting WiFi ...</field>
+              </block>
+            </value>
+            <next>
+              <block type="wifi_connect" id="iTc1`1rDgaNQjfj4-M7a">
+                <value name="SSID">
+                  <block type="text" id="tFoPooknD5s(,XD6G]Z[">
+                    <field name="TEXT">...</field>
+                  </block>
+                </value>
+                <value name="PASSWORD">
+                  <block type="text" id="}+Fqr}o4la9UP:.Q^~!N">
+                    <field name="TEXT">...</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="serial_print" id="gA{aAI:/8l-G~D.=J.8G" disabled="true">
+                    <field name="SERIAL_ID">Serial</field>
+                    <field name="NEW_LINE">TRUE</field>
+                    <value name="CONTENT">
+                      <block type="text" id="Ce2]qgcKVx@!DPcGEYU?">
+                        <field name="TEXT">Retrieving net time ...</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="time_set_via_wifi" id="?Je3WEt!#PFoeoQDGg`d">
+                        <next>
+                          <block type="serial_print" id="eI@v(L*Gecg?|k]Fg,ZU" disabled="true">
+                            <field name="SERIAL_ID">Serial</field>
+                            <field name="NEW_LINE">TRUE</field>
+                            <value name="CONTENT">
+                              <block type="text" id="s`!^JXQp?%XRmr*/|wRQ">
+                                <field name="TEXT">Initializing LED ring ...</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="neopixel_settings" id="=q-^yec?G?-L/Q#B_cl4">
+                                <field name="WS2812_NAME">myLedRing</field>
+                                <field name="NEOPIXEL_PIN">12</field>
+                                <value name="NEOPIXEL_COUNT">
+                                  <block type="math_number" id="b3n+tRR@-BD*t3[{HIGg">
+                                    <field name="NUM">12</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="G.4T}45DST]7?%EM3tKk">
+                                    <field name="VAR">hour</field>
+                                    <next>
+                                      <block type="variables_set" id="9^eBq~^QbB^!N5V-@ytH">
+                                        <field name="VAR">minute</field>
+                                        <next>
+                                          <block type="variables_set" id="2RrLX(%Z*In2=YU9URk-">
+                                            <field name="VAR">second</field>
+                                            <next>
+                                              <block type="variables_set" id="o19vk~.^q_ETv7mG_mU)">
+                                                <field name="VAR">displayCount</field>
+                                                <value name="VALUE">
+                                                  <block type="math_number" id="Cg?(i(ahn*EneGTFBJE]">
+                                                    <field name="NUM">15</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="serial_print" id=")jN.!z!PxRzc]i*+1?C." disabled="true">
+                                                    <field name="SERIAL_ID">Serial</field>
+                                                    <field name="NEW_LINE">TRUE</field>
+                                                    <value name="CONTENT">
+                                                      <block type="text" id="brf|s{Dl=3g4c4QK7qtu">
+                                                        <field name="TEXT">Ready.</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="serial_print" id="T@4P[FB_xYLg;B.k.EZT" disabled="true">
+        <field name="SERIAL_ID">Serial</field>
+        <field name="NEW_LINE">TRUE</field>
+        <value name="CONTENT">
+          <block type="text" id="vN+-!xJbkV79M+tZ};dH">
+            <field name="TEXT">Touched? ...</field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="YPKVJf7h-[Ht/Rb)oR{w">
+            <value name="IF0">
+              <block type="touch_sensor_touch_detected" id="g3h*N%h7{6pj1i5|TYwo">
+                <field name="TOUCH_PIN">T0</field>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="serial_print" id="Q0hK-Ns75}lQ4]3wY[K~" disabled="true">
+                <field name="SERIAL_ID">Serial</field>
+                <field name="NEW_LINE">TRUE</field>
+                <value name="CONTENT">
+                  <block type="text" id="E.tzST73qH+!Cr}@qw~.">
+                    <field name="TEXT">Touched!</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="w/xH_vo^cH_JxXf)G{Wn">
+                    <field name="VAR">displayCount</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="..u{kf2++E2a{*2z7%p{">
+                        <field name="NUM">30</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="controls_whileUntil" id="M6tTvU+gGc9Ah!3rnO?F">
+                <field name="MODE">WHILE</field>
+                <value name="BOOL">
+                  <block type="logic_compare" id="+#Ps66ME2Z8njHu)EL,F">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="variables_get" id="Q}yvw3-I*uw~1TCQ4emb">
+                        <field name="VAR">displayCount</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="4?F@3Ok{{TOI[c;wbi8S">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="serial_print" id="TWq!0nlC;96XrpcXJfql" disabled="true">
+                    <field name="SERIAL_ID">Serial</field>
+                    <field name="NEW_LINE">TRUE</field>
+                    <value name="CONTENT">
+                      <block type="text" id="9yQ*+u%.P`0l0vbys+=[">
+                        <field name="TEXT">Getting time ...</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="-,r,oz0nH%+bw%;1fYRr">
+                        <field name="VAR">hour</field>
+                        <value name="VALUE">
+                          <block type="time_get_date_time" id="W3Qn03F;jaBiFG)s?AJr">
+                            <field name="VALUE">HOUR</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="r6Qjt]m1dzs{/hxuDc[?">
+                            <field name="VAR">minute</field>
+                            <value name="VALUE">
+                              <block type="time_get_date_time" id="({;nkFEMms;^5Z!J4T%a">
+                                <field name="VALUE">MINUTE</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="7G7%x3*M%tqs6bR}y}lR">
+                                <field name="VAR">second</field>
+                                <value name="VALUE">
+                                  <block type="time_get_date_time" id="`C359[p2I(S):nTp}8*0">
+                                    <field name="VALUE">SECOND</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="serial_print" id="_3C8`wfs[Z`kocRVI:2G" disabled="true">
+                                    <field name="SERIAL_ID">Serial</field>
+                                    <field name="NEW_LINE">TRUE</field>
+                                    <value name="CONTENT">
+                                      <block type="text_join" id="7mMiqSOX/98%D4EF|lbW">
+                                        <mutation items="6"></mutation>
+                                        <value name="ADD0">
+                                          <block type="text" id="~pb3HbY|`Vav_%eDK[3D">
+                                            <field name="TEXT">Time:</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD1">
+                                          <block type="variables_get" id="8BZgB_9b36=]jZWM%T6c">
+                                            <field name="VAR">hour</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD2">
+                                          <block type="text" id="?TAv@68JK,4lWb3|j:_(">
+                                            <field name="TEXT">:</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD3">
+                                          <block type="variables_get" id=".GNqkseU*..B%/=Z.=;O">
+                                            <field name="VAR">minute</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD4">
+                                          <block type="text" id="Ee.u6)872XxRkGWS-N.)">
+                                            <field name="TEXT">:</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD5">
+                                          <block type="variables_get" id=",7=l_wGC9d4f[;=4HIRd">
+                                            <field name="VAR">second</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="D,3e}SrA5okVkP.=]IJ3">
+                                        <field name="VAR">hourHand</field>
+                                        <value name="VALUE">
+                                          <block type="math_modulo" id="XqNkRyqJKS+3bC{:n8`T">
+                                            <value name="DIVIDEND">
+                                              <block type="variables_get" id="RaoRame:3{w-j@=|})M_">
+                                                <field name="VAR">hour</field>
+                                              </block>
+                                            </value>
+                                            <value name="DIVISOR">
+                                              <block type="math_number" id="{6]CzjZ2k,hW+kp6Im8`">
+                                                <field name="NUM">12</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="variables_set" id="g0c}ef)I/H4c/RK411UL">
+                                            <field name="VAR">minuteHand</field>
+                                            <value name="VALUE">
+                                              <block type="math_arithmetic" id="`k4Ha;e|CxSM5pAAFFR4">
+                                                <field name="OP">DIVIDE</field>
+                                                <value name="A">
+                                                  <block type="variables_get" id="JA`?3bM`6`I9O9SiNon6">
+                                                    <field name="VAR">minute</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="math_number" id="Nd#dszfFY}0#!BAe3OU-">
+                                                    <field name="NUM">5</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="variables_set" id="h{L.e;5Ep1aE@6AC_(:j">
+                                                <field name="VAR">secondHand</field>
+                                                <value name="VALUE">
+                                                  <block type="math_arithmetic" id="%,|}9bF!Jg:DK-233%=~">
+                                                    <field name="OP">DIVIDE</field>
+                                                    <value name="A">
+                                                      <block type="variables_get" id="M%|/.pHU9hJAY5kX*nkQ">
+                                                        <field name="VAR">second</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="B">
+                                                      <block type="math_number" id="90jRVhv9gCAe,ob5ZKt)">
+                                                        <field name="NUM">5</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="serial_print" id="C#bhn|-BlYw3-evpvl~C" disabled="true">
+                                                    <field name="SERIAL_ID">Serial</field>
+                                                    <field name="NEW_LINE">TRUE</field>
+                                                    <value name="CONTENT">
+                                                      <block type="text_join" id="u5)oX@-N]O-:U+pJ{V8q">
+                                                        <mutation items="6"></mutation>
+                                                        <value name="ADD0">
+                                                          <block type="text" id="7,]Qp`~ehaz?y;3OnQf3">
+                                                            <field name="TEXT">Clock face:</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD1">
+                                                          <block type="variables_get" id="~iPhi{kZR/D*f}2CWMHl">
+                                                            <field name="VAR">hourHand</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD2">
+                                                          <block type="text" id="T;--@@zHrk2WHe{vkFm.">
+                                                            <field name="TEXT">,</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD3">
+                                                          <block type="variables_get" id="?|}QK^5EcMjOo!SkBqGP">
+                                                            <field name="VAR">minuteHand</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD4">
+                                                          <block type="text" id="I?Wm2V-:Q9|uA@j.A!tK">
+                                                            <field name="TEXT">,</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD5">
+                                                          <block type="variables_get" id="(_,r)WmHVof8WAwEo56l">
+                                                            <field name="VAR">secondHand</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="serial_print" id="|=S/sC;4SQfP9xWu(MQL" disabled="true">
+                                                        <field name="SERIAL_ID">Serial</field>
+                                                        <field name="NEW_LINE">TRUE</field>
+                                                        <value name="CONTENT">
+                                                          <block type="text" id="yZEdTP^A9g?w*:95S{8r">
+                                                            <field name="TEXT">Setting clock face ...</field>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="controls_for" id="6DGP*~v!FHIx/l{|8scp">
+                                                            <field name="VAR">ledIndex</field>
+                                                            <value name="FROM">
+                                                              <block type="math_number" id="5K;JkM!d/l3.(z9,yVKR">
+                                                                <field name="NUM">0</field>
+                                                              </block>
+                                                            </value>
+                                                            <value name="TO">
+                                                              <block type="math_number" id="UP()!beWyv.dT}HKZno.">
+                                                                <field name="NUM">11</field>
+                                                              </block>
+                                                            </value>
+                                                            <value name="BY">
+                                                              <block type="math_number" id="ww_Z4Vpvq:Q=IxOR58Nl">
+                                                                <field name="NUM">1</field>
+                                                              </block>
+                                                            </value>
+                                                            <statement name="DO">
+                                                              <block type="variables_set" id="ryv)j5XxYQt!3]_0VY1*">
+                                                                <field name="VAR">red</field>
+                                                                <value name="VALUE">
+                                                                  <block type="math_arithmetic" id="-^BbkCfW@LpBah{VNZWI">
+                                                                    <field name="OP">ADD</field>
+                                                                    <value name="A">
+                                                                      <block type="math_number" id="i~2B*JEhjd#fPZ(eMeNY">
+                                                                        <field name="NUM">0</field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="B">
+                                                                      <block type="logic_ternary" id="H.x7p~BatGIQ8Y`TqM)A">
+                                                                        <value name="IF">
+                                                                          <block type="logic_compare" id="U37Zs}bul3ICjDeu(c~q">
+                                                                            <field name="OP">EQ</field>
+                                                                            <value name="A">
+                                                                              <block type="variables_get" id="iE}Wz{D:I~wF7=QbdwIR">
+                                                                                <field name="VAR">ledIndex</field>
+                                                                              </block>
+                                                                            </value>
+                                                                            <value name="B">
+                                                                              <block type="variables_get" id="cJCM;A!;Kj~a~ipXpG?=">
+                                                                                <field name="VAR">hourHand</field>
+                                                                              </block>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                        <value name="THEN">
+                                                                          <block type="math_arithmetic" id="+BnnocLi,;2s3xjr^T4%">
+                                                                            <field name="OP">MINUS</field>
+                                                                            <value name="A">
+                                                                              <block type="math_number" id="[TK_?86lQ,`k0.(iqVE!">
+                                                                                <field name="NUM">128</field>
+                                                                              </block>
+                                                                            </value>
+                                                                            <value name="B">
+                                                                              <block type="math_arithmetic" id="!CU2C|*pNE-{;2CIf:2;">
+                                                                                <field name="OP">MULTIPLY</field>
+                                                                                <value name="A">
+                                                                                  <block type="math_number" id="J?Y7z~tLA%,L%4P#GMWJ">
+                                                                                    <field name="NUM">32</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <value name="B">
+                                                                                  <block type="math_arithmetic" id="GUaxQG_ohSfzcc;t9cLH">
+                                                                                    <field name="OP">DIVIDE</field>
+                                                                                    <value name="A">
+                                                                                      <block type="variables_get" id="wN6D^^!q@#EK3)JQK2QX">
+                                                                                        <field name="VAR">minute</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <value name="B">
+                                                                                      <block type="math_number" id="/7B;R1)qZu6i=4e?0xU[">
+                                                                                        <field name="NUM">15</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </value>
+                                                                              </block>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                        <value name="ELSE">
+                                                                          <block type="math_number" id="z4Con[234C8jKMm3Aqe+">
+                                                                            <field name="NUM">0</field>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                                <next>
+                                                                  <block type="variables_set" id="nJ2.?xvV%xfatvq.#{RT">
+                                                                    <field name="VAR">green</field>
+                                                                    <value name="VALUE">
+                                                                      <block type="math_arithmetic" id="3Xj+pkyw(YOV*BBjKGaE">
+                                                                        <field name="OP">ADD</field>
+                                                                        <value name="A">
+                                                                          <block type="math_number" id="W3dYQ7k31nWtY[W?M|,Q">
+                                                                            <field name="NUM">0</field>
+                                                                          </block>
+                                                                        </value>
+                                                                        <value name="B">
+                                                                          <block type="logic_ternary" id="_h3VrBs*2[!h*VPeNbfp">
+                                                                            <value name="IF">
+                                                                              <block type="logic_compare" id="cM%IFg)Blk%GCp=^v_03">
+                                                                                <field name="OP">EQ</field>
+                                                                                <value name="A">
+                                                                                  <block type="variables_get" id=",_J/ddKlL5dLs*AOdViG">
+                                                                                    <field name="VAR">ledIndex</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <value name="B">
+                                                                                  <block type="variables_get" id="w[0=zag)gy?]o%tbSDA_">
+                                                                                    <field name="VAR">minuteHand</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                              </block>
+                                                                            </value>
+                                                                            <value name="THEN">
+                                                                              <block type="math_arithmetic" id="5eNR(AOW_kIJ%4J*#r2%">
+                                                                                <field name="OP">MINUS</field>
+                                                                                <value name="A">
+                                                                                  <block type="math_number" id="iH2K@%gckLV{xWYNYJbC">
+                                                                                    <field name="NUM">128</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <value name="B">
+                                                                                  <block type="math_arithmetic" id="n7AlhO29S!I(kux,,_B3">
+                                                                                    <field name="OP">MULTIPLY</field>
+                                                                                    <value name="A">
+                                                                                      <block type="math_number" id="20s,4fw[OG4OteCB}BOl">
+                                                                                        <field name="NUM">32</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <value name="B">
+                                                                                      <block type="math_modulo" id="oc+AZn=9d6yM4SnDzGBS">
+                                                                                        <value name="DIVIDEND">
+                                                                                          <block type="variables_get" id=";y%m3(2+Te)4z(`z)g1#">
+                                                                                            <field name="VAR">minute</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <value name="DIVISOR">
+                                                                                          <block type="math_number" id="m]J0xHl,05[Lk{rKQXNU">
+                                                                                            <field name="NUM">5</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </value>
+                                                                              </block>
+                                                                            </value>
+                                                                            <value name="ELSE">
+                                                                              <block type="math_number" id="gFqs%P/!?~*VT[~Xb~)@">
+                                                                                <field name="NUM">0</field>
+                                                                              </block>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </value>
+                                                                    <next>
+                                                                      <block type="variables_set" id="4g~STq^r}hTZ^q1=HE!z">
+                                                                        <field name="VAR">blue</field>
+                                                                        <value name="VALUE">
+                                                                          <block type="math_arithmetic" id="n5g-/S}(yQf~t!I,Z0#X">
+                                                                            <field name="OP">ADD</field>
+                                                                            <value name="A">
+                                                                              <block type="math_number" id="NXy4^4BLH}#y#fhED?2u">
+                                                                                <field name="NUM">0</field>
+                                                                              </block>
+                                                                            </value>
+                                                                            <value name="B">
+                                                                              <block type="logic_ternary" id="2ZE:W#9*fd*df8?wnPla">
+                                                                                <value name="IF">
+                                                                                  <block type="logic_compare" id="J)h%Hx#Eq]G~1rL~57Ej">
+                                                                                    <field name="OP">EQ</field>
+                                                                                    <value name="A">
+                                                                                      <block type="variables_get" id="G.SvlW0ENk=t+?--eG-`">
+                                                                                        <field name="VAR">ledIndex</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <value name="B">
+                                                                                      <block type="variables_get" id="sRN-aW#XE(?_i+0?::Ru">
+                                                                                        <field name="VAR">secondHand</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <value name="THEN">
+                                                                                  <block type="math_arithmetic" id="HbdIK0Xx_zE)b|K%2;13">
+                                                                                    <field name="OP">MINUS</field>
+                                                                                    <value name="A">
+                                                                                      <block type="math_number" id="toCbcQ%UbvGwG|W!6`cX">
+                                                                                        <field name="NUM">128</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <value name="B">
+                                                                                      <block type="math_arithmetic" id="yUrSWof?Qb2ca0V6)41/">
+                                                                                        <field name="OP">MULTIPLY</field>
+                                                                                        <value name="A">
+                                                                                          <block type="math_number" id="!.;Nv[9!B`]sC/z;=~DG">
+                                                                                            <field name="NUM">32</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <value name="B">
+                                                                                          <block type="math_modulo" id="?y:VhgG)U,x6VGaH3XU)">
+                                                                                            <value name="DIVIDEND">
+                                                                                              <block type="variables_get" id="!#QR{e4sOmnb|SZ(3J2`">
+                                                                                                <field name="VAR">second</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="DIVISOR">
+                                                                                              <block type="math_number" id="U2rNDWp]DrW~6l;-ec1o">
+                                                                                                <field name="NUM">5</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <value name="ELSE">
+                                                                                  <block type="math_number" id="SfJrK!3TxGm_].|+/S;n">
+                                                                                    <field name="NUM">0</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                              </block>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                        <next>
+                                                                          <block type="controls_if" id="T145Ja%-MWtAvXKH)jq=">
+                                                                            <value name="IF0">
+                                                                              <block type="logic_compare" id="dhSI9|7_bso:0!0KD7Nx">
+                                                                                <field name="OP">EQ</field>
+                                                                                <value name="A">
+                                                                                  <block type="variables_get" id="0bzxYrCK/a1|yazO)3Q4">
+                                                                                    <field name="VAR">ledIndex</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <value name="B">
+                                                                                  <block type="math_modulo" id="wngjrpnO}pl6,)?N~Ndf">
+                                                                                    <value name="DIVIDEND">
+                                                                                      <block type="math_arithmetic" id=".hgK1{mc;X%%9n%];m]#">
+                                                                                        <field name="OP">ADD</field>
+                                                                                        <value name="A">
+                                                                                          <block type="variables_get" id="CN(GU/8!SfY[I6=@iDxZ">
+                                                                                            <field name="VAR">hourHand</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <value name="B">
+                                                                                          <block type="math_number" id="B=Nq?(O02A*ce%BQ]R;B">
+                                                                                            <field name="NUM">1</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <value name="DIVISOR">
+                                                                                      <block type="math_number" id="9/,x6WNDN^@ngjeNnz,B">
+                                                                                        <field name="NUM">12</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </value>
+                                                                              </block>
+                                                                            </value>
+                                                                            <statement name="DO0">
+                                                                              <block type="variables_set" id="zep.fp/9o!|O=,!GO=sw">
+                                                                                <field name="VAR">red</field>
+                                                                                <value name="VALUE">
+                                                                                  <block type="math_arithmetic" id="*cU0vRiPX(p5hVK/aE/3">
+                                                                                    <field name="OP">MULTIPLY</field>
+                                                                                    <value name="A">
+                                                                                      <block type="math_number" id="f-y[^-%kFnMtnJ(EZ2pM">
+                                                                                        <field name="NUM">32</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <value name="B">
+                                                                                      <block type="math_arithmetic" id="ly:%,gxZ5.E]7b5TcOhQ">
+                                                                                        <field name="OP">DIVIDE</field>
+                                                                                        <value name="A">
+                                                                                          <block type="variables_get" id="D,X+(GcQ786_gj)8Y!.|">
+                                                                                            <field name="VAR">minute</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <value name="B">
+                                                                                          <block type="math_number" id="EnDDqzp;Xrz-|7^s_wSY">
+                                                                                            <field name="NUM">15</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </value>
+                                                                              </block>
+                                                                            </statement>
+                                                                            <next>
+                                                                              <block type="controls_if" id="L@}xr0_Fh.f`Ea[vKyd}">
+                                                                                <value name="IF0">
+                                                                                  <block type="logic_compare" id="Ss5_New9-=mAL}7SnRSz">
+                                                                                    <field name="OP">EQ</field>
+                                                                                    <value name="A">
+                                                                                      <block type="variables_get" id="X(`W1YbSlcdEdcpApn`x">
+                                                                                        <field name="VAR">ledIndex</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <value name="B">
+                                                                                      <block type="math_modulo" id="56?*QNk+*IJq`^uK)dfe">
+                                                                                        <value name="DIVIDEND">
+                                                                                          <block type="math_arithmetic" id="nSH!mr|8b{W4F+QdJsfy">
+                                                                                            <field name="OP">ADD</field>
+                                                                                            <value name="A">
+                                                                                              <block type="variables_get" id="-IS9,woeb3!RQ/T/K|cv">
+                                                                                                <field name="VAR">minuteHand</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="B">
+                                                                                              <block type="math_number" id="!?oP:{pt%H7w#+J+U|ej">
+                                                                                                <field name="NUM">1</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <value name="DIVISOR">
+                                                                                          <block type="math_number" id="@69E{e|7^.8Vyh8l(7kR">
+                                                                                            <field name="NUM">12</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <statement name="DO0">
+                                                                                  <block type="variables_set" id=")K:pl0N-h]S[;oU/^znz">
+                                                                                    <field name="VAR">green</field>
+                                                                                    <value name="VALUE">
+                                                                                      <block type="math_arithmetic" id="5mKR.Z`YG5?f%98vw[l?">
+                                                                                        <field name="OP">MULTIPLY</field>
+                                                                                        <value name="A">
+                                                                                          <block type="math_number" id="}BMidj1KUHC}3s5J8i-R">
+                                                                                            <field name="NUM">32</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <value name="B">
+                                                                                          <block type="math_modulo" id="ST-Blr=-~4B0-C/t|A|]">
+                                                                                            <value name="DIVIDEND">
+                                                                                              <block type="variables_get" id="7IA_k`fy+?iu6!TDpEIL">
+                                                                                                <field name="VAR">minute</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="DIVISOR">
+                                                                                              <block type="math_number" id="]1@iHOKW0eVK8FqP3h/b">
+                                                                                                <field name="NUM">5</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </statement>
+                                                                                <next>
+                                                                                  <block type="controls_if" id="jY2s7TMHh(s8[6u8ba)p">
+                                                                                    <value name="IF0">
+                                                                                      <block type="logic_compare" id="[lr[2qJ,)_d|JJBR%.u-">
+                                                                                        <field name="OP">EQ</field>
+                                                                                        <value name="A">
+                                                                                          <block type="variables_get" id="T|cgqmAL6}.mY9A5uxeF">
+                                                                                            <field name="VAR">ledIndex</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <value name="B">
+                                                                                          <block type="math_modulo" id="O~+a(Xr~waqQR[7cG*xr">
+                                                                                            <value name="DIVIDEND">
+                                                                                              <block type="math_arithmetic" id="Qx39=kb[=0`#9b`D02~-">
+                                                                                                <field name="OP">ADD</field>
+                                                                                                <value name="A">
+                                                                                                  <block type="variables_get" id="%1|xG13LSL._.Fa1ukqk">
+                                                                                                    <field name="VAR">secondHand</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="B">
+                                                                                                  <block type="math_number" id="Ds67n8;[=YJqx!+|ObsA">
+                                                                                                    <field name="NUM">1</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="DIVISOR">
+                                                                                              <block type="math_number" id="8/dZgvK}yIUS-=U0JJsE">
+                                                                                                <field name="NUM">12</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <statement name="DO0">
+                                                                                      <block type="variables_set" id=".=wWb|E([kS6h!#q;pDM">
+                                                                                        <field name="VAR">blue</field>
+                                                                                        <value name="VALUE">
+                                                                                          <block type="math_arithmetic" id="Vb3Hqj4B^OAGYQljEQa8">
+                                                                                            <field name="OP">MULTIPLY</field>
+                                                                                            <value name="A">
+                                                                                              <block type="math_number" id="fj1G[A_W+5G65bcnj;L!">
+                                                                                                <field name="NUM">32</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="B">
+                                                                                              <block type="math_modulo" id="wp7l?I|M4G4b^gO#O=id">
+                                                                                                <value name="DIVIDEND">
+                                                                                                  <block type="variables_get" id="Ey-:c31oW?2ymt2m._:-">
+                                                                                                    <field name="VAR">second</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                                <value name="DIVISOR">
+                                                                                                  <block type="math_number" id=":M;o^gt{7@O5R~Z5~-6b">
+                                                                                                    <field name="NUM">5</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </statement>
+                                                                                    <next>
+                                                                                      <block type="serial_print" id="X8*TE|`4br66N:FuQ~af" disabled="true">
+                                                                                        <field name="SERIAL_ID">Serial</field>
+                                                                                        <field name="NEW_LINE">TRUE</field>
+                                                                                        <value name="CONTENT">
+                                                                                          <block type="text_join" id="E{T~6tUgRoM;+8z?Ct+.">
+                                                                                            <mutation items="8"></mutation>
+                                                                                            <value name="ADD0">
+                                                                                              <block type="text" id="t6XYD.v??(wgbW%}3}ni">
+                                                                                                <field name="TEXT">Pixel (</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="ADD1">
+                                                                                              <block type="variables_get" id="+RhHvia#X:lT0p#/yrA?">
+                                                                                                <field name="VAR">ledIndex</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="ADD2">
+                                                                                              <block type="text" id=";yV`~e{7h^9DFZOAfmEd">
+                                                                                                <field name="TEXT">) =</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="ADD3">
+                                                                                              <block type="variables_get" id="5)hKCO+Kcf}bAr/LOTso">
+                                                                                                <field name="VAR">red</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="ADD4">
+                                                                                              <block type="text" id="/]3ZnlCJDduA`UN{2T::">
+                                                                                                <field name="TEXT">,</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="ADD5">
+                                                                                              <block type="variables_get" id="*nmQo2.3~;3mo^H8wqSw">
+                                                                                                <field name="VAR">green</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="ADD6">
+                                                                                              <block type="text" id="axCKG]f{M(h^b~u{vM9i">
+                                                                                                <field name="TEXT">,</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="ADD7">
+                                                                                              <block type="variables_get" id="8T4XiMB[GoID9?TL|Oup">
+                                                                                                <field name="VAR">blue</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <next>
+                                                                                          <block type="neopixel_set_rgb" id="_)q!L_SS+Y8v6fo]~eCJ">
+                                                                                            <field name="WS2812_NAME">myLedRing</field>
+                                                                                            <value name="NEOPIXEL_LED">
+                                                                                              <block type="variables_get" id="v|M,Y`V[gG^su_2O;c;I">
+                                                                                                <field name="VAR">ledIndex</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="NEOPIXEL_RED">
+                                                                                              <block type="variables_get" id="q1SZerc6_5;/BrhJt{0n">
+                                                                                                <field name="VAR">red</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="NEOPIXEL_GREEN">
+                                                                                              <block type="variables_get" id="%k^L5j.-5%vm.^e1)uh0">
+                                                                                                <field name="VAR">green</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="NEOPIXEL_BLUE">
+                                                                                              <block type="variables_get" id="dg`gi:2oH?k;8m/Y:Cku">
+                                                                                                <field name="VAR">blue</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                          </block>
+                                                                                        </next>
+                                                                                      </block>
+                                                                                    </next>
+                                                                                  </block>
+                                                                                </next>
+                                                                              </block>
+                                                                            </next>
+                                                                          </block>
+                                                                        </next>
+                                                                      </block>
+                                                                    </next>
+                                                                  </block>
+                                                                </next>
+                                                              </block>
+                                                            </statement>
+                                                            <next>
+                                                              <block type="serial_print" id=":gqAPc.k97}fvUyHN5U]" disabled="true">
+                                                                <field name="SERIAL_ID">Serial</field>
+                                                                <field name="NEW_LINE">TRUE</field>
+                                                                <value name="CONTENT">
+                                                                  <block type="text" id="G^hgh,,~)]hJBq{g37G/">
+                                                                    <field name="TEXT">Showing clock face ...</field>
+                                                                  </block>
+                                                                </value>
+                                                                <next>
+                                                                  <block type="neopixel_show" id="U1So+usgf4VvpZ/(l!1O">
+                                                                    <field name="WS2812_NAME">myLedRing</field>
+                                                                    <next>
+                                                                      <block type="time_delay" id="5W3NoQAQWctzMJYfH!=,">
+                                                                        <value name="DELAY_TIME_MILI">
+                                                                          <block type="math_number" id="ntUsNVYRc{BT;p}vUd`,">
+                                                                            <field name="NUM">1000</field>
+                                                                          </block>
+                                                                        </value>
+                                                                        <next>
+                                                                          <block type="math_change" id="fG?D://_wt=OAHue4%xF">
+                                                                            <field name="VAR">displayCount</field>
+                                                                            <value name="DELTA">
+                                                                              <block type="math_number" id="HBaWrye7`LX]IbUoPlO7">
+                                                                                <field name="NUM">-1</field>
+                                                                              </block>
+                                                                            </value>
+                                                                            <next>
+                                                                              <block type="serial_print" id="]`)GZT4J(+ZQxHYQg0OQ" disabled="true">
+                                                                                <field name="SERIAL_ID">Serial</field>
+                                                                                <field name="NEW_LINE">TRUE</field>
+                                                                                <value name="CONTENT">
+                                                                                  <block type="text_join" id="ezaOagQCG-S?kb+i1.~G">
+                                                                                    <mutation items="3"></mutation>
+                                                                                    <value name="ADD0">
+                                                                                      <block type="text" id="YZjG*mSpay=wq7*rxIqZ">
+                                                                                        <field name="TEXT">Display cycles remaining:</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <value name="ADD1">
+                                                                                      <block type="variables_get" id="o-U3}p[8a;fTy{YP2ZV~">
+                                                                                        <field name="VAR">displayCount</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <value name="ADD2">
+                                                                                      <block type="text" id="q?d?[g/w+gG[[+hXF0B2">
+                                                                                        <field name="TEXT"> ...</field>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <next>
+                                                                                  <block type="controls_if" id="^,L,%E*mK+5qI:PS]bzz">
+                                                                                    <value name="IF0">
+                                                                                      <block type="logic_compare" id="|}O{F}:nodo|mysNxr:z">
+                                                                                        <field name="OP">EQ</field>
+                                                                                        <value name="A">
+                                                                                          <block type="variables_get" id="WNo[1Xs7xLjEs(5R*U6u">
+                                                                                            <field name="VAR">displayCount</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <value name="B">
+                                                                                          <block type="math_number" id="JF+*;8}pf3idh^E86kC0">
+                                                                                            <field name="NUM">0</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </value>
+                                                                                    <statement name="DO0">
+                                                                                      <block type="serial_print" id="+R.A^!3Aqm^hc3)PLk3-" disabled="true">
+                                                                                        <field name="SERIAL_ID">Serial</field>
+                                                                                        <field name="NEW_LINE">TRUE</field>
+                                                                                        <value name="CONTENT">
+                                                                                          <block type="text" id=")1L11]TB_N3PerIDRo]3">
+                                                                                            <field name="TEXT">Switch off clock face ...</field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                        <next>
+                                                                                          <block type="controls_for" id="2D~B)5{FQT(]2{,4c:xR">
+                                                                                            <field name="VAR">ledIndex</field>
+                                                                                            <value name="FROM">
+                                                                                              <block type="math_number" id="7s5Xy(R`f*+TgB!mVD`r">
+                                                                                                <field name="NUM">0</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="TO">
+                                                                                              <block type="math_number" id="j`?L3kwSq@uZepNtDgoo">
+                                                                                                <field name="NUM">11</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <value name="BY">
+                                                                                              <block type="math_number" id="TM_N??Wne(iL1.mve~XH">
+                                                                                                <field name="NUM">1</field>
+                                                                                              </block>
+                                                                                            </value>
+                                                                                            <statement name="DO">
+                                                                                              <block type="neopixel_set_rgb" id="C5njTF#7}]fXQ6XR@)m1">
+                                                                                                <field name="WS2812_NAME">myLedRing</field>
+                                                                                                <value name="NEOPIXEL_LED">
+                                                                                                  <block type="variables_get" id="b4u[1B#CILnO_SCY1+}i">
+                                                                                                    <field name="VAR">ledIndex</field>
+                                                                                                  </block>
+                                                                                                </value>
+                                                                                              </block>
+                                                                                            </statement>
+                                                                                            <next>
+                                                                                              <block type="neopixel_show" id="dC]o6Vq(uh+l78p:(K#L">
+                                                                                                <field name="WS2812_NAME">myLedRing</field>
+                                                                                                <next>
+                                                                                                  <block type="time_delay" id=",aUb9G2mPK`mvU7QxKme">
+                                                                                                    <value name="DELAY_TIME_MILI">
+                                                                                                      <block type="math_number" id="nB#XV`DPAHp=kS|j40LK">
+                                                                                                        <field name="NUM">10</field>
+                                                                                                      </block>
+                                                                                                    </value>
+                                                                                                  </block>
+                                                                                                </next>
+                                                                                              </block>
+                                                                                            </next>
+                                                                                          </block>
+                                                                                        </next>
+                                                                                      </block>
+                                                                                    </statement>
+                                                                                  </block>
+                                                                                </next>
+                                                                              </block>
+                                                                            </next>
+                                                                          </block>
+                                                                        </next>
+                                                                      </block>
+                                                                    </next>
+                                                                  </block>
+                                                                </next>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="serial_print" id="AO|/H=wc[yJZ[{j@6kgw" disabled="true">
+                    <field name="SERIAL_ID">Serial</field>
+                    <field name="NEW_LINE">TRUE</field>
+                    <value name="CONTENT">
+                      <block type="text" id="iC@H`+0i}@2TT:K_`bfi">
+                        <field name="TEXT">Done.</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
