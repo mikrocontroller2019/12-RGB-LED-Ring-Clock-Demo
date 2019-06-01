@@ -1,113 +1,115 @@
-Dies ist ein Demo-Projekt als *Hausaufgabe* für den [openHPI](https://open.hpi.de/)-Kurs [Wie programmiere ich meinen ersten Mini-Computer?](https://open.hpi.de/courses/mikrocontroller2019/resume).
+**12 RGB LED Ring Clock Demo - Yet another Arduino LED clock ;)**
+=================================================================
 
-**12 RGB LED Ring Clock Demo**
-=============================
+__Yet another Arduino LED clock: A *decorative* desktop / wall clock featring *internet time * via WiFi and *one-touch-activation* ... ;)__
 
-__Eine *dekorative* ('Geschmacksache'), *nerdige* ('Ansichtssache') Tisch- oder Wanduhr mit *Internetzeit* via WiFi und *Touch-Bedienung* ... ;)__
+This little project was an excercise / homework for the German [openHPI](https://open.hpi.de/)-Kurs [Wie programmiere ich meinen ersten Mini-Computer?](https://open.hpi.de/courses/mikrocontroller2019/resume). ('How do I program my first mini computer?').
+
+The original project description (in German) is [here](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo). / Die ursprüngliche Beschreibung, das Anschlussschema, Fotos und der Quellcode (für Ardublockly und die Arduino IDE) sind [hier](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo) zu finden.
+
+The course featured a [customized version](https://github.com/Daniel-Amadeus/ardublockly) of [Ardublockly](https://ardublockly.embeddedlog.com/) (a visual programming editor for Arduino based on Google's Blockly) and the task was to implement and describe a physical computing project soley by using this tool.
 
 ![](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo/blob/master/miscellaneous/Project%20Cover.jpg)
 
-Diese Beschreibung, das Anschlussschema, Fotos und der Quellcode (für Ardublockly und die Arduino IDE) sind auch in diesem [GitHub-Repository](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo) zu finden.
+# BOM
 
-# Man nehme ..
+## Components
 
-## Komponenten
+* ESP32 microcontroller development board (e.g. the ESP-32 Dev Kit C) 
+* 12Bit RGB LED ring WS2812 (e.g. the NeoPixel Ring - 12 x 5050 RGB LED with Integrated Drivers)
+* Breadboard, half-size 
+* Jumper wires
+* Battery (e.g. a 5V power pack)
 
-* ESP32-Mikrocontroller Development Board
-* 12Bit RGB LED Ring WS2812
-* Breadboard, halbe Größe / 400 Verbindungen 
-* 4x Jumper-Kabel
-* 5V Powerbank mit Micro-USB-Anschlusskabel
+## Addition material
 
-## Material
+* Picture frame (deep enough to house the device - e.g. the RIBBA frame by IKEA)
+* One-cent-coin
+* Glue (e.g. hot glue)
 
-* Bilderrahmen 10x15cm - mit genügend Tiefe um die Elektronik unterzubringen  (z.B. der RIBBA Rahmen von IKEA), ggf. mit Passpartout
-* 1-Cent-Münze
-* Kleber, Klebeband etc.
+# Assembly
 
-# Und setze das Ganze zusammen ...
+## Wiring
 
-## Verkabelung und Anschlüsse
+Connect the LED ring with the ESP32 board as follows:
 
-Die Anschlüsse des 12bit RGB LED Ring WS2812 wie folgt mit dem ESP32-Mikrocontroller auf einem Breadboard verbinden:
-
-| ESP32 - Pin   | LED-Ring - Anschluss | Kabel-Farbe |
+| ESP32 pin   | LED ring connector | Wire |
 |:-------------:|:--------------------:|:-----------:|
-| 5V            | PWR                  | rot         |
+| 5V            | PWR                  | red         |
 | GND           | GND                  | orange      |
-| G12           | DI                   | grün        |
+| G12           | DI                   | green        |
 
-### Anschlüsse am 12bit RGB LED Ring WS2812
+###  @ 12bit RGB LED ring WS2812
+Connect 
+* a **red** wire to ***PWR*** connector
+* an **orange** wire to ***GND*** connector
+* a **green** wire to  ***DI*** connector
+.
 
-* Kabel **rot** an den Anschluss ***PWR***
-* Kabel **orange** an den Anschluss ***GND***
-* Kabel **grün** an den Anschluss ***DI***
+### @ ESP32 board 
 
-anschließen bzw. anlöten.
+Connect
 
-### Pins am ESP32-Board
+* the **red** to pin ***5V***
+* the **orange** to pin ***GND***
+* the **green** to pin ***G12***
+* a **yellow** to pin ***G14***
 
-* Kabel **rot** an den Pin ***5V***
-* Kabel **orange** an den Pin ***GND***
-* Kabel **grün** an den  Pin ***G12***
-* Kabel **gelb** an den Pin ***G14***
+via the breadboard.
 
-über das Breadboard verbinden.
-
-Das **gelbe** Kabel am Pin  ***G14*** wird später mit *Touch-Sensor* verbunden.
+The yellow wire will be connected to the *touch sensor* (i.e. the one-cent-coint).
 
 ![](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo/blob/master/images/Fritzing%20-%2012_RGB_LED_Ring_Clock_bb.png)
 
-## Zusammen-/Einbau
+## Casing
 
 ![](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo/blob/master/images/Photo%2001%20-%20Material%2C%20Setup%20%26%20Wiring.jpg)
 
-* Ein Bild für das Zifferblatt *passend* (für den Umfang des LED-Rings) gestalten (oder z.B. [dieses hier](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo/blob/master/images/'Artwork'%20-%20Rose%20Clock%20Face.png) verwenden), ausdrucken und für den Rahmen passend zuschneiden.
-* Das Bild hinter dem Glas (und ggf. dem Passpartout) im Rahmen platzieren und befestigen.
-* LED-Ring auf der Rückseite des Bildes platzieren: LEDs nach vorne, die erste LED (Index 0) nach oben (*auf die 12*) - und z.B. mit Klebebandstreifen fixieren.
-* Breadboard mit dem ESP32-Mikrocontroller unten im Rahmen fixieren (z.B. Klebeband).
-* Das Kabel (**gelb**), welches am Pin ***G14*** angeschlossen ist, an einer 1-Cent-Münze befestigen (löten, kleben etc.) und die Münze so an einer Ecke auf der Rückseite des Rahmens befestigen, dass die Ränder 1-2 mm über den Rand des Rahmens hervorstehen. 
+* Create, print and cut in size a nice picture for the clock face regarding the diameter of the LED ring. (e.g. like [this](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo/blob/master/images/'Artwork'%20-%20Rose%20Clock%20Face.png) one).
+* Place the picture into the frame.
+* Place the LED ring on the back side of the picture and fix it there with glue.
+* Place/glue also the breadboard with ESP32 board inside the frame.
+* *Connect* the **yellow** wire (connected to pin ***G14***) to the one-cent-coin and fix the coin on a back corner at the frame. 
 
 ![](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo/blob/master/images/Photo%2005%20-%20Setup%20(1).jpg)
 
-* Zum Fixieren des Ganzen kann ein z.B. ein Stück Styropor, Schaumstoff etc. passend zugeschnitten verwendet werden.
-
 ![](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo/blob/master/images/Photo%2008%20-%20Setup%20(4).jpg)
 
-## "Wie programmiere ich ...?"
+## Programming
 
 ![](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo/blob/master/images/Ardublockly%20-%20Blocks.jpg)
 
 ### Ardublockly
 
-Die Datei `12_RGB_LED_Ring_Clock.xml` ([hier](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo/blob/master/src/12_RGB_LED_Ring_Clock.xml)) nit [Ardublockly](https://ardublockly.embeddedlog.com/) öffnen und auf das ESP32-Board übertragen ...
+If you want to use Ardublockly, open the file
+ `12_RGB_LED_Ring_Clock.xml` ([here](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo/blob/master/src/12_RGB_LED_Ring_Clock.xml)) in Ardubockly and click the IDE button.
 
-* Ggf. muss der Variablenname `myLedRing` im *Setup led strip*-Block wieder korrigiert werden, da Ardublockly hier manchmal eine neue Variable beim Öffnen der Datei anlegt, statt den ursprünglichen Variablennamen zu verwenden.
-* Die deaktivierten Blöcke zur seriellen Kommunikation sollten nur zum Debugging o.ä. verwendet werden. Im *Normalbetrieb* kann die serielle Kommunikation beim ESP32 zu *Timing-Problemen* mit dem WS2812-Treiber führen, die sich z.B. durch das ungewollte Aufleuchten der LED 0 in der Farbe grün manifestieren.
+* Since Ardublocky somtimes f.cks up some variable identfiers it might be necessary to change the identifier `myLedRing` with in the  *Setup led strip* back to it's correct value.
+* The blocks regarding serial communication should be only activated for debugging purposes, since the use of Serial might interfere with the Neopixel library's functions.
 
-oder
+or
 
 ### Arduino IDE
 
-die Datei `12_RGB_LED_Ring_Clock.ino` ([hier](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo/blob/master/src/12_RGB_LED_Ring_Clock.ino)) nit der Arduino IDE öffnen, übersetzen  und auf das ESP32-Board übertragen.
+Open the file `12_RGB_LED_Ring_Clock.ino` ([here](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo/blob/master/src/12_RGB_LED_Ring_Clock.ino)) with the Arduino IDE, compile and transfer to device.
 
 
-# Und das kommt dabei heraus ...
+# Operating
 
 ![](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo/blob/master/images/Photo%2009%20-%20Setup%20(5).jpg)
 
-Nach dem *Einschalten* der Stromversorgung ...
+After powering-on the device, it ...
 
-* Aufbau der WiFi-Verbindung ...
-* Abrufen der Zeit via NTP ...
-* Anzeige der Uhrzeit für 15 Sekunden ...
-* Alle LEDs werden *ausgeschaltet* ...
+* tries to establish the configured WiFi connection,
+* tries to receive the current time via NTP,
+* displays the time for about 15 seconds 
+* and then switches of all LEDs.
 
-Bei Berührung des *Touch-Sensors* (der Rand der 1-Cent-Münze) wird die Uhrzeit für die Dauer von einer Minute angezeigt, danach erlischt die Anzeige wieder bis zur nächsten Aktivierung des Sensors.
+When the coin is touched it will display the current time again. After one minute the display will go dark again till the next activation by touch.
 
-Die Uhrzeit wird auf den 12 LEDs wie folgt angezeigt:
+Time will be displayed by the light colours of the 12 LEDs:
 
-### Zifferblatt
+### Clock face
 
 | | | | | | | |
 |----	|----	|----	|----	|----	|----	|----	|
@@ -120,20 +122,20 @@ Die Uhrzeit wird auf den 12 LEDs wie folgt angezeigt:
 |    	|    	| 07 	|    	| 05 	|    	|    	|
 |    	|    	|    	| 06 	|    	|    	|    	|
 
-### Zeiger
+### Hands
 
-| 'Zeiger' | LED-Farbe     |
-|:--------:|:-------------:|
-| Stunden  | **R**OT       |
-| Minuten  | **G**RÜN      |
-| Sekunden | **B**LAU      |
+| 'Hand'   | LED colour     |
+|:--------:|:--------------:|
+| Hours    | **R**ED        |
+| Minutes  | **G**REEN      |
+| Seconds  | **B**LUE       |
 
-* Zeigerstände zwischen zwei Positionen (1-Stunde / 5-Minuten / 5-Sekunden) werden durch zwei benachbarte LED mit entsprechender Helligkeit angezeigt.
-* *Übereinanderstehende Zeiger* werden als *Farbmix* dargestellt.
+* Hands between two positions (1-hour / 5-minutes / 5-seconds) are displayed on two neighbouring LEDs with adjusted brigthness.
+* Hands *covering each other* will be displayed by mixed colours.
 
-### Beispiel
+### Example
 
-21:15:40 Uhr
+21:15:40 (09:14:40 pm)
 
 | | | | | | | |
 |-------	|-------	|----	|----	|----	|----	|-------	|
@@ -147,6 +149,6 @@ Die Uhrzeit wird auf den 12 LEDs wie folgt angezeigt:
 
 ![](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo/blob/master/images/Photo%2014%20-%20Clock%20%20(light).jpg)
 
-### Demo-Video
+### Better than words:
 
-[hier](https://youtu.be/2-kaJKGSo0A)
+[Video](https://youtu.be/2-kaJKGSo0A) showing the clock in action.
