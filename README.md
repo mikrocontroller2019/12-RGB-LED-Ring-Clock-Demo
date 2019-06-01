@@ -5,7 +5,7 @@ __Yet another Arduino LED clock: A *decorative* desktop / wall clock featring *i
 
 This little project was an excercise / homework for the German [openHPI](https://open.hpi.de/)-Kurs [Wie programmiere ich meinen ersten Mini-Computer?](https://open.hpi.de/courses/mikrocontroller2019/resume). ('How do I program my first mini computer?').
 
-The original project description (in German) is [here](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo). / Die ursprüngliche Beschreibung, das Anschlussschema, Fotos und der Quellcode (für Ardublockly und die Arduino IDE) sind [hier](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo) zu finden.
+The original project description (in German) is [here](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo/blob/master/%23mikrocontroller2019%20-%20'Physical%20Computing'-Projekt.md). / Die ursprüngliche Beschreibung, das Anschlussschema, Fotos und der Quellcode (für Ardublockly und die Arduino IDE) sind [hier](https://github.com/mikrocontroller2019/12-RGB-LED-Ring-Clock-Demo) zu finden.
 
 The course featured a [customized version](https://github.com/Daniel-Amadeus/ardublockly) of [Ardublockly](https://ardublockly.embeddedlog.com/) (a visual programming editor for Arduino based on Google's Blockly) and the task was to implement and describe a physical computing project soley by using this tool.
 
