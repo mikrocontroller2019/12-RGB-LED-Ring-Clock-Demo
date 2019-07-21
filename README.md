@@ -1,7 +1,7 @@
 **12 RGB LED Ring Clock Demo - Yet another Arduino LED clock ;)**
 =================================================================
 
-__Yet another Arduino LED clock: A *decorative* desktop / wall clock featring *internet time * via WiFi and *one-touch-activation* ... ;)__
+__Yet another Arduino LED clock: A *decorative* desktop / wall clock featuring *internet time * via WiFi and *one-touch-activation* ... ;)__
 
 This little project was an excercise / homework for the German [openHPI](https://open.hpi.de/)-Kurs [Wie programmiere ich meinen ersten Mini-Computer?](https://open.hpi.de/courses/mikrocontroller2019/resume). ('How do I program my first mini computer?').
 
